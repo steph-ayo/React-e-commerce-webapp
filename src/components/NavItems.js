@@ -4,12 +4,17 @@ import logo from "../assets/images/logo/logo.png";
 
 export default function NavItems() {
   const [menuToggle, setMenuToggle] = useState(false);
-  // const [socialToggle, setSocialToggle] = useState(false);
+  const [socialToggle, setSocialToggle] = useState(false);
   const [headerFixed, setHeaderFixed] = useState(false);
 
   // Function to toggle the menu state
   const toggleMenu = () => {
     setMenuToggle(!menuToggle); // Toggle the menu state
+  };
+
+  // Function to toggle the social state
+  const toggleSocial = () => {
+    setSocialToggle(!socialToggle); // Toggle the social state
   };
 
   // addEvent listener
@@ -27,7 +32,7 @@ export default function NavItems() {
       }`}
     >
       {/* --------------HEADER TOP (START)-------------- */}
-      <div className={'header-top-md-none ${socialToggle ? "open" : ""}'}>
+      <div className={`header-top-md-none ${socialToggle ? "open" : ""}`}>
         <div className="container">
           <div className="header-top-area">
             <Link to="/signup" className="lab-btn me-3">
@@ -81,6 +86,21 @@ export default function NavItems() {
               <Link to="/login" className="d-none d-md-block">
                 Log In
               </Link>
+
+              {/* -----MENU TOGGLER ----- */}
+              <div
+                onClick={toggleMenu}
+                className={`header-bar d-lg-none ${menuToggle ? "active" : ""}`}
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              {/* -----SOCIAL TOGGLER ----- */}
+              <div className="ellepsis-bar d-md-none" onClick={toggleSocial}>
+                <i className="icofont-info-square"></i>
+              </div>
             </div>
           </div>
         </div>
