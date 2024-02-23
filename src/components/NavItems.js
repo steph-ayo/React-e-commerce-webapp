@@ -32,7 +32,7 @@ export default function NavItems() {
       }`}
     >
       {/* --------------HEADER TOP (START)-------------- */}
-      <div className={`header-top-md-none ${socialToggle ? "open" : ""}`}>
+      <div className={`header-top d-md-none ${socialToggle ? "open" : ""}`}>
         <div className="container">
           <div className="header-top-area">
             <Link to="/signup" className="lab-btn me-3">
@@ -59,7 +59,6 @@ export default function NavItems() {
             {/* -----MENU AREA----- */}
             <div className="menu-area">
               <div className="menu">
-                {/* <button onClick={toggleMenu}>Toggle Menu</button> */}
                 <ul className={`lab-ul ${menuToggle ? "active" : toggleMenu}`}>
                   <li>
                     <Link to="/">Home</Link>
