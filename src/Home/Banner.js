@@ -1,8 +1,13 @@
 import React from "react";
 
-const title = <h2>Search Your One from Thousand of Products</h2>;
+const title = (
+  <h2>
+    Search Your One from <span>Thousand</span> of Products
+  </h2>
+);
 
 // const desc = "We have the largest collection of products";
+
 // const bannerList = [
 //   {
 //     iconName: "icofont-users-alt-4",
@@ -22,9 +27,17 @@ export default function Banner() {
   return (
     <div className="banner-section style-4">
       <div className="container">
-        <div className="banner-content">{title}</div>
-        {/* <div className="banner-content">{desc}</div>
-        <div className="banner-content">{bannerList}</div> */}
+        <div className="banner-content">
+          {title}
+          <form>
+            <input
+              type="text"
+              name="search"
+              id="search"
+              placeholder="Search your product"
+            />
+          </form>
+        </div>
       </div>
     </div>
   );
