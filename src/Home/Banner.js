@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import productData from "../products.json";
 
 const title = (
   <h2>
@@ -24,6 +25,21 @@ const bannerList = [
 ];
 
 export default function Banner() {
+  const [searchInput, setSearchInput] = useState("");
+  const [filterProducts, setFilterProducts] = useState(productData);
+
+  // Search functionality
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value;
+    setSearchInput(searchTerm);
+
+    //filtering products based on search
+    const filtered = productData.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilterProducts(filtered);
+  };
+
   return (
     <div className="banner-section style-4">
       <div className="container">
@@ -35,8 +51,14 @@ export default function Banner() {
               name="search"
               id="search"
               placeholder="Search your product"
+              value={searchInput}
+              onChange={handleSearch}
             />
           </form>
+          <p>{desc}</p>
+          <ul className="lab-ul">
+            {searchInput && filteredProducts.map((products) => <li></li>)}
+          </ul>
         </div>
       </div>
     </div>
