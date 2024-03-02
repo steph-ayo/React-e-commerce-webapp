@@ -5,9 +5,6 @@ import NavItems from "./components/NavItems";
 
 export default function App() {
   return (
-    // <div className="App">
-    //   <h1 style={{ color: "red" }}>Hello, Developer!</h1>
-    // </div>
     <>
       <NavItems />
       <Outlet />
