@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import productData from "../products.json";
+import { Link } from "react-router-dom";
 
 const title = (
   <h2>
@@ -9,24 +10,24 @@ const title = (
 
 const desc = "We have the largest collection of products";
 
-const bannerList = [
-  {
-    iconName: "icofont-users-alt-4",
-    text: "1.5 Million Customers",
-  },
-  {
-    iconName: "icofont-notification",
-    text: "More then 2000 Marchent",
-  },
-  {
-    iconName: "icofont-globe",
-    text: "Buy Anything Online",
-  },
-];
+// const bannerList = [
+//   {
+//     iconName: "icofont-users-alt-4",
+//     text: "1.5 Million Customers",
+//   },
+//   {
+//     iconName: "icofont-notification",
+//     text: "More then 2000 Marchent",
+//   },
+//   {
+//     iconName: "icofont-globe",
+//     text: "Buy Anything Online",
+//   },
+// ];
 
 export default function Banner() {
   const [searchInput, setSearchInput] = useState("");
-  const [filterProducts, setFilterProducts] = useState(productData);
+  const [filteredProducts, setFilteredProducts] = useState(productData);
 
   // Search functionality
   const handleSearch = (e) => {
@@ -37,7 +38,7 @@ export default function Banner() {
     const filtered = productData.filter((product) =>
       product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilterProducts(filtered);
+    setFilteredProducts(filtered);
   };
 
   return (
@@ -54,10 +55,20 @@ export default function Banner() {
               value={searchInput}
               onChange={handleSearch}
             />
+            <button type="submit">
+              <i className="icofont-search"></i>
+            </button>
           </form>
-          <p>{desc}</p>
+          <p>
+            <marquee>{desc}</marquee>
+          </p>
           <ul className="lab-ul">
-            {searchInput && filterProducts.map((products) => <li></li>)}
+            {searchInput &&
+              filteredProducts.map((product, i) => (
+                <li key={i}>
+                  <Link to={`/shop/${product.id}`}>{product.name}</Link>
+                </li>
+              ))}
           </ul>
         </div>
       </div>
